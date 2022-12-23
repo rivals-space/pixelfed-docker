@@ -118,6 +118,10 @@ COPY conf/ini/pixelfed.ini $PHP_INI_DIR/conf.d/pixelfed.ini
 
 WORKDIR /srv/app
 
+# Add entrypoint
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
+
 # Add composer
 COPY --from=composer_stage /usr/bin/composer /usr/bin/composer
 ENV PATH="${PATH}:$HOME/.composer/vendor/bin"
