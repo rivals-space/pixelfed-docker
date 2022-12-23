@@ -84,10 +84,9 @@ RUN set -eux; \
 		pcntl \
 		zip \
 		gd \
-        mysqli \
         redis \
         pdo \
-        pdo_mysql\
+        pdo_pgsql \
         soap \
         imap \
         imagick \
