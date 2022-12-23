@@ -154,4 +154,6 @@ RUN set -eux; \
 RUN set -eux; \
     pwd && ls -alh; \
     composer install --no-ansi --no-interaction --optimize-autoloader; \
-    php artisan storage:link
+    php artisan storage:link; \
+    php artisan route:cache; \
+    php artisan view:cache
