@@ -53,6 +53,7 @@ RUN set -eux; \
     docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/; \
 	docker-php-ext-install -j$(nproc) \
 		intl \
+        bcmath \
 		zip \
 		gd \
         mysqli \
