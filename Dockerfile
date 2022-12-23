@@ -142,11 +142,14 @@ CMD ["php-fpm"]
 
 FROM base_stage AS pixelfed_prod
 
-ENV PIXELFED_VERSION="0.11.4"
+ENV PIXELFED_VERSION="dev"
 
 # download & extract pixelfed source
 RUN set -eux; \
-    wget https://github.com/pixelfed/pixelfed/archive/refs/tags/v${PIXELFED_VERSION}.tar.gz -O /tmp/pixelfed.tar.gz; \
+    if [ "${PIXELFED_VERSION}" = "dev" ] ] ; \
+      then wget https://codeload.github.com/pixelfed/pixelfed/tar.gz/dev -O /tmp/pixelfed.tar.gz; \
+      else wget https://github.com/pixelfed/pixelfed/archive/refs/tags/v${PIXELFED_VERSION}.tar.gz -O /tmp/pixelfed.tar.gz; \
+    fi \
     cd /srv/app && tar --strip-components=1 -zxvf /tmp/pixelfed.tar.gz pixelfed-${PIXELFED_VERSION}; \
     rm /tmp/pixelfed.tar.gz
 
