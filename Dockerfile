@@ -146,10 +146,12 @@ ENV PIXELFED_VERSION="dev"
 
 # download & extract pixelfed source
 RUN set -eux; \
-    if [ "${PIXELFED_VERSION}" = "dev" ] ] ; \
-      then wget https://codeload.github.com/pixelfed/pixelfed/tar.gz/dev -O /tmp/pixelfed.tar.gz; \
-      else wget https://github.com/pixelfed/pixelfed/archive/refs/tags/v${PIXELFED_VERSION}.tar.gz -O /tmp/pixelfed.tar.gz; \
-    fi; \
+    ( \
+      if [ "${PIXELFED_VERSION}" = "dev" ] ; \
+          then wget https://codeload.github.com/pixelfed/pixelfed/tar.gz/dev -O /tmp/pixelfed.tar.gz; \
+          else wget https://github.com/pixelfed/pixelfed/archive/refs/tags/v${PIXELFED_VERSION}.tar.gz -O /tmp/pixelfed.tar.gz; \
+        fi \
+    ); \
     cd /srv/app && tar --strip-components=1 -zxvf /tmp/pixelfed.tar.gz pixelfed-${PIXELFED_VERSION}; \
     rm /tmp/pixelfed.tar.gz
 
