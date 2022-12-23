@@ -65,6 +65,7 @@ RUN set -eux; \
         soap \
         imap \
         gettext \
+        exif \
     ; \
     pecl install apcu-${APCU_VERSION}; \
     pecl install \
@@ -90,6 +91,7 @@ RUN set -eux; \
         soap \
         imap \
         imagick \
+        exif \
     ; \
 	\
 	runDeps="$( \
