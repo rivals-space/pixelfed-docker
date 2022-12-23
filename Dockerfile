@@ -40,6 +40,7 @@ RUN set -eux; \
         libpng \
         libpng-dev \
         libxml2-dev \
+        libpq-dev \
         imap-dev \
         krb5-dev \
         gettext-dev \
@@ -51,15 +52,16 @@ RUN set -eux; \
 	\
 	docker-php-ext-configure zip; \
     docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/; \
+    docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql; \
 	docker-php-ext-install -j$(nproc) \
 		intl \
         bcmath \
 		pcntl \
         zip \
 		gd \
-        mysqli \
         pdo \
-        pdo_mysql\
+        pdo_pgsql \
+        pgsql \
         soap \
         imap \
         gettext \
