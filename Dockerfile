@@ -54,7 +54,8 @@ RUN set -eux; \
 	docker-php-ext-install -j$(nproc) \
 		intl \
         bcmath \
-		zip \
+		pcntl \
+        zip \
 		gd \
         mysqli \
         pdo \
@@ -77,6 +78,8 @@ RUN set -eux; \
 		apcu \
 		opcache \
 		intl \
+        bcmath \
+		pcntl \
 		zip \
 		gd \
         mysqli \
